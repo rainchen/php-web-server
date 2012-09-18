@@ -5,7 +5,7 @@ This is a very simple PHP (2 script) webserver, created using the original code 
 
 To run this server, clone the repository (or fork if you want to modify), by running
 
-> git clone git://github.com/busbyjon/php-web-server.git
+> git clone git://github.com/aroemen/php-web-server.git
 
 Then start the server by running
 
