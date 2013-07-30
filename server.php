@@ -1,5 +1,10 @@
 <?php
 /**
+ * add an alias in your ~/.bash_profile like:
+ * alias php-web-server="php ~/php-web-server/server.php"
+ * then cd the dir of source code and run:
+ * $ php-web-server
+ *
  *  Author: Benjamin Maynor <BenjaminMaynor@gmail.com>
  *  April, 2009
  */
@@ -46,18 +51,26 @@ $mimeType = array(
     ''      => 'text/html'
 );
 
+$shortopts = "";
+$shortopts .= "p:";  // config port, e.g.: -p 3000
+$options = getopt($shortopts);
+
+$port = $options['p'] ?: '3000';
+
 // Your starting directory. Trailing '/' required.
-$webroot = "scripts/";
+$webroot = "./";
 // The default file to look for in your webroot.
 $index = "index";
 // And its extension
 $indexExtension = "php";
 
-$socket = stream_socket_server("tcp://127.0.0.1:81", $errno, $errstr);
+$socket = stream_socket_server("tcp://127.0.0.1:$port", $errno, $errstr);
 if (!$socket) {
   echo "$errstr ($errno)<br />" . PHP_EOL;
 } else {
-    echo "Listening...\n";
+    $php_version = PHP_VERSION;
+    echo ">> PHP($php_version) web server\n";
+    echo ">> Listening on 0.0.0.0:$port, CTRL+C to stop\n";
 
     while (true) {
         $_POST = array();
@@ -267,7 +280,8 @@ function getContent($fileName, $getString, $postString) {
     );
 
     // We load php-cgi because we want our output interpreted for a browser.
-    $process = proc_open("php-cgi loader.php $fileName $get $post", $descriptorspec, $pipes);
+    $php_web_server_dir = dirname(__FILE__);
+    $process = proc_open("php $php_web_server_dir/loader.php $fileName $get $post", $descriptorspec, $pipes);
 
     if (is_resource($process)) {
         $content = stream_get_contents($pipes[1]);
