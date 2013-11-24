@@ -9,7 +9,16 @@ To run this server, clone the repository (or fork if you want to modify), by run
 
 Then start the server by running
 
-> php server.php /path/to/webroot port
+add an alias in your ~/.bash_profile like:
+> alias php-web-server="php ~/php-web-server/server.php"
+
+then `cd` the dir of source code and run:
+> $ php-web-server
+
+for example:
+
+![demo](http://i.imgur.com/KczA0qL.png)
+
 
 There are _some_ custom rewrite rules for symfony which may require modification, but the server should run.
 
