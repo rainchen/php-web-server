@@ -10,7 +10,7 @@ To run this server, clone the repository (or fork if you want to modify), by run
 Then start the server by running
 
 add an alias in your ~/.bash_profile like:
-> alias php-web-server="php ~/php-web-server/server.php"
+> alias php-server="php ~/php-web-server/server.php"
 
 then `cd` the dir of source code and run:
 > $ php-web-server
