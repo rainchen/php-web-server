@@ -55,7 +55,7 @@ $shortopts = "";
 $shortopts .= "p:";  // config port, e.g.: -p 3000
 $options = getopt($shortopts);
 
-$port = $options['p'] ?: '3000';
+$port = $options['p'] ?: '4000';
 
 // Your starting directory. Trailing '/' required.
 $webroot = "./";
