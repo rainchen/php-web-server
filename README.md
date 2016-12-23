@@ -5,12 +5,12 @@ This is a very simple PHP (2 script) webserver, created using the original code 
 
 To run this server, clone the repository (or fork if you want to modify), by running
 
-> git clone git://github.com/aroemen/php-web-server.git
+> git clone git://github.com/rainchen/php-web-server.git
 
 Then start the server by running
 
 add an alias in your ~/.bash_profile like:
-> alias php-server="php ~/php-web-server/server.php"
+> alias php-web-server="php ~/php-web-server/server.php"
 
 then `cd` the dir of source code and run:
 > $ php-web-server
